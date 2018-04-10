@@ -1,0 +1,65 @@
+import coleccionista.*
+
+describe "tests del coleccionista "{
+	
+	fixture {
+		coleccionista.agregarElemento(soldadoDePlomo)
+		coleccionista.agregarElemento(cassetteCantaninio)
+		coleccionista.agregarElemento(muniecoHeman )
+		coleccionista.agregarElemento(discoViniloLaBalsa)
+	}
+
+
+	test "objetos fragiles" {
+		assert.equals(#{soldadoDePlomo, discoViniloLaBalsa}, coleccionista.objetosFragiles())
+	}
+
+	test "objetos fragil mas caro" {
+		assert.equals(discoViniloLaBalsa, coleccionista.objetoFragilMasCaro())
+	}
+
+	test "valor en objetos fragiles" {
+		assert.equals(2000, coleccionista.valorEnObjetosFragiles())
+	}
+
+	test "valor en juguetes" {
+		assert.equals(1300, coleccionista.valorEnCategoria(juguete))
+	}
+	
+	test "valor en musica" {
+		assert.equals(2400, coleccionista.valorEnCategoria(musica))
+	}
+
+	test "test existe elemento de categoria (juguete y musica" {
+		assert.that(coleccionista.existeElementoDe(musica))
+		assert.that(coleccionista.existeElementoDe(juguete))
+	}
+
+	test "test existe elemento de categoria (solo juguete)" {
+		coleccionista.quitarElemento(discoViniloLaBalsa)
+		coleccionista.quitarElemento(cassetteCantaninio)
+		assert.that(coleccionista.existeElementoDe(juguete))
+		assert.notThat(coleccionista.existeElementoDe(musica))
+	}
+	
+	test "categorias" {
+		assert.equals(#{juguete, musica}, coleccionista.categorias())
+	}
+	
+	test "categorias (solo juguete)" {
+		coleccionista.quitarElemento(discoViniloLaBalsa)
+		coleccionista.quitarElemento(cassetteCantaninio)
+		assert.equals(#{juguete}, coleccionista.categorias())
+	}
+	
+	test "todos valiososo (no) " {
+		assert.notThat(coleccionista.todosValiosos())
+	}
+
+	test "todos valiososo" {
+		coleccionista.quitarElemento(soldadoDePlomo)
+		assert.that(coleccionista.todosValiosos())
+	}
+
+}	
+	
