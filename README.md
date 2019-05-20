@@ -1,4 +1,7 @@
 # Ejercicio: Coleccionista
+ 
+[![Build Status](https://travis-ci.org/wollok/ejercicioColeccionista.svg?branch=master)](https://travis-ci.org/wollok/ejercicioColeccionista)
+
 
 Se trata de una aplicación que sirve para que una persona, dueña de una galería de elementos coleccionables
 los administre. 
